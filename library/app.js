@@ -16,6 +16,8 @@ app.use('js', express.static(path.join(__dirname, '/node_modules/jquery/dist')))
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
 bookRouter.route('/')
   .get((req, res) => {
     res.render('books',
@@ -35,7 +37,7 @@ app.get('/', (req, res) => {
     'index',
     {
       nav: [{ link: '/books', title: 'Books' },
-      { link: '/authors', title: 'Authors' }],
+        { link: '/authors', title: 'Authors' }],
       title: 'Library'
     }
   );
